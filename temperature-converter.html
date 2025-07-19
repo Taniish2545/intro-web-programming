@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Temperature Converter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul class="navbar">
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="mark-to-grade.html">Mark to Grade</a></li>
+      <li><a href="staff.html">Staff</a></li>
+      <li><a href="temperature-converter.html" class="active">Temperature Converter</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>Temperature Converter</h1>
+
+  <form id="tempForm" oninput="convertTemp(event)">
+    <label>
+      Celsius: 
+      <input type="number" id="celsius" name="celsius" placeholder="°C" />
+    </label><br/><br/>
+    <label>
+      Fahrenheit: 
+      <input type="number" id="fahrenheit" name="fahrenheit" placeholder="°F" />
+    </label><br/><br/>
+    <label>
+      Kelvin: 
+      <input type="number" id="kelvin" name="kelvin" placeholder="K" />
+    </label>
+  </form>
+
+</main>
+
+<footer>
+  <p>&copy; Tanish Patel - <span id="currentDate"></span></p>
+</footer>
+
+<script>
+  function roundToTwo(num) {
+    return Math.round(num * 100) / 100;
+  }
+
+  // Flag to avoid infinite loops
+  let isUpdating = false;
+
+  function convertTemp(event) {
+    if (isUpdating) return;
+
+    const celsiusInput = document.getElementById('celsius');
+    const fahrenheitInput = document.getElementById('fahrenheit');
+    const kelvinInput = document.getElementById('kelvin');
+
+    isUpdating = true;
+
+    const target = event.target;
+    let celsius, fahrenheit, kelvin;
+
+    if (target.id === 'celsius') {
+      celsius = parseFloat(celsiusInput.value);
+      if (isNaN(celsius)) {
+        fahrenheitInput.value = '';
+        kelvinInput.value = '';
+      } else {
+        fahrenheit = (celsius * 9/5) + 32;
+        kelvin = celsius + 273.15;
+        fahrenheitInput.value = roundToTwo(fahrenheit);
+        kelvinInput.value = roundToTwo(kelvin);
+      }
+    } else if (target.id === 'fahrenheit') {
+      fahrenheit = parseFloat(fahrenheitInput.value);
+      if (isNaN(fahrenheit)) {
+        celsiusInput.value = '';
+        kelvinInput.value = '';
+      } else {
+        celsius = (fahrenheit - 32) * 5/9;
+        kelvin = celsius + 273.15;
+        celsiusInput.value = roundToTwo(celsius);
+        kelvinInput.value = roundToTwo(kelvin);
+      }
+    } else if (target.id === 'kelvin') {
+      kelvin = parseFloat(kelvinInput.value);
+      if (isNaN(kelvin)) {
+        celsiusInput.value = '';
+        fahrenheitInput.value = '';
+      } else {
+        celsius = kelvin - 273.15;
+        fahrenheit = (celsius * 9/5) + 32;
+        celsiusInput.value = roundToTwo(celsius);
+        fahrenheitInput.value = roundToTwo(fahrenheit);
+      }
+    }
+
+    isUpdating = false;
+  }
+
+  window.onload = function() {
+    const dateSpan = document.getElementById("currentDate");
+    const now = new Date();
+    dateSpan.textContent = now.toLocaleDateString();
+  };
+</script>
+
+</body>
+</html>

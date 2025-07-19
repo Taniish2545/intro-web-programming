@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Profile</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Center everything in main */
+    main {
+      max-width: 700px;
+      margin: 40px auto;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    main img#profilePic {
+      display: none; /* Hide initially */
+      margin-top: 20px;
+      border-radius: 8px;
+      width: 200px;
+      height: 200px;
+      object-fit: cover; /* maintain aspect ratio, crop if needed */
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    p {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul class="navbar">
+      <li><a href="profile.html" class="active">Profile</a></li>
+      <li><a href="mark-to-grade.html">Mark to Grade</a></li>
+      <li><a href="staff.html">Staff</a></li>
+      <li><a href="temperature-converter.html">Temperature Converter</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>About Me</h1>
+
+  <p>I'm Tanish Patel, a software developer and programmer. I always enjoy working on interactive websites and learning new web technologies. </p>
+
+  <p>It is a kind of demonstration of my added skills in HTML, CSS, and JavaScript applied to the development of dynamic web pages in one of my course works..</p>
+
+  <img id="profilePic" src="Profile.png" alt="Profile Picture" />
+</main>
+
+<footer>
+  <p>&copy; <span class="footer-name">@Tanish Patel - 2025</span>
+</footer>
+
+
+<script>
+  window.onload = function() {
+    // Show image after 10 seconds
+    setTimeout(() => {
+      document.getElementById('profilePic').style.display = 'block';
+    }, 10000);
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Staff Page</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul class="navbar">
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="mark-to-grade.html">Mark to Grade</a></li>
+      <li><a href="staff.html" class="active">Staff</a></li>
+      <li><a href="temperature-converter.html">Temperature Converter</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>Staff List</h1>
+
+  <button onclick="sortStaffByColumn(0)">Sort by Name</button>
+  <button onclick="sortStaffByColumn(5)">Sort by Salary</button>
+
+  <table id="staffTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th>Extn</th>
+        <th>Start Date</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</main>
+
+<footer>
+  <p>&copy; Tanish Patel - <span id="currentDate"></span></p>
+</footer>
+
+<script src="staff-data.js"></script>
+<script src="staff.js"></script>
+</body>
+</html>
